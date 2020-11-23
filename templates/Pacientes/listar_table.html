@@ -1,0 +1,14 @@
+
+{% for object in object_list %} 
+<tr>
+<td>{{ object.dni_paciente}}</td>
+<td>{{object.nombre }}</td>
+
+
+<!-- If objet_list is empty  -->
+
+</tr>
+{% empty %} 
+
+<strong>No objects yet. </strong> 
+{% endfor %}
