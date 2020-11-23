@@ -14,11 +14,6 @@
 					<div class="brand_logo_container">
                         <img src="static/img/imagenlogin.png" class="brand_logo" alt="Logo" th:src="@{/static/img/imagenlogin.png}"/>
 					</div>
-					
-					<!-- <div class="brand_logo_container">
-						<img src="img/logo login.png" class="brand_logo" alt="Logo">
-					</div> -->
-
                 </div>
                 <div class="d-flex justify-content-center form_container">
 					<form class="col-10" th:action="@{/login}" method="POST">
@@ -61,8 +56,8 @@
                         </div>
                 
                         {% if form.errors %}
-                        <div class="container" style="padding: 15px; text-align: center;">
-                            <p class="text-danger">Su usuario y/o contraseña no son válidos</p>
+                        <div class="container">
+                            <p class="text-danger" style="padding: 8px; text-align: center;">Su usuario y/o contraseña no son válidos</p>
                         </div>
 						{% endif%}
 						
