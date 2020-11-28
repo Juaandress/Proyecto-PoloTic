@@ -4,7 +4,7 @@
     
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     
     <!--datables estilo bootstrap 4 CSS-->  
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
@@ -26,19 +26,38 @@
     <link rel="stylesheet" href=" {% static 'css/bootstrap.min.css' %}">
     <!-- Material Design Bootstrap -->
     <link rel="stylesheet" href=" {% static 'css/mdb.min.css' %}">  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
     {% block title %} <title>Clínica de Optometría</title> {% endblock %}
 </head>
 
     {% block nav %}
     <!--Barra de navegacion-->
 
+        <!-- <li class="nav-item" style="margin:10px;">
+            <a href="{% url 'logout' %}" role="button" class="btn btn-warning" >
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </li>
+
+        
+        <li class="nav-item" style="margin:10px;">
+            <a href="{% url 'login' %}" role="button" class="btn btn-warning" >
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </li> -->
+   
+
     <nav class="mb-1 navbar navbar-expand-lg navbar-dark primary-color">
-        <a class="navbar-brand text-center" href="#">Clínica de Optometría |</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333" aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-            <ul class="navbar-nav mr-auto">
+            <a class="navbar-brand" href="#">Clínica de Optometría | </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+              aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+              <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link" href="/templates/Turnos/turnos.html">Turnos
                     <span class="sr-only">(current)</span>
@@ -51,7 +70,29 @@
                     <a class="nav-link" href="/templates/Pacientes/pacientes.html">Pacientes</a>
                 </li>
             </ul>
+
+            {% if user.is_authenticated %}
             <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                            <span> Hola {{user.first_name}}</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+                        <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
+                    </div>
+                    </a>
+                </li>
+            </ul>
+            {% endif %}
+
+                <!-- {% if user.is_authenticated %}
+                <li class="nav-item" style="margin:10px;">
+                <i class="fas fa-user-alt"></i>
+                    <span> Hola {{user.first_name}}</span>
+                </li>
+                {% endif %}
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user"></i>
@@ -59,7 +100,8 @@
                     <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
                     <a class="dropdown-item" href="{% url 'logout' %}">Cerrar sesión</a>
                     </div>
-                </li>
+                </li> -->
+
             </ul>
         </div>
     </nav>
