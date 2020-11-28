@@ -1,8 +1,109 @@
-{% extends "Home.html" %}
+{% extends "base.html" %}
 {% load static %}
-{% block title %} <title>Pacientes</title> {% endblock %}
+{% block title %} <title>PACIENTES | Clínica de Optometría</title> {% endblock %}
 
 {% block header %} <p>Pacientes</p> {% endblock %}
+
+
+{% block body %}
+<!-- Button trigger modal -->
+
+<div class="row justify-content-center">
+
+  <form id="formulario" class="" action="{% url 'app_pacientes:index' %}" method="post">
+    {% csrf_token %}
+    <div class="container-fluid">
+      <label for="nombre">Nombre:</label>
+      <input type="text" name="nombre" placeholder="Ingrese su nombre" minlength="4" maxlength="40" required />
+    </div>
+    <div class="container-fluid">
+      <label for="apellido">Apellido:</label>
+      <input type="text" name="apellido" placeholder="Ingrese su apellido" minlength="4" maxlength="40" required />
+    </div>
+    <div class="container-fluid">
+      <label for="dni">DNI:</label>
+      <input type="text" name="dni" placeholder="Ingrese su DNI" minlength="4" maxlength="9" required />
+    </div>
+    <div class="container-fluid">
+      <label for="telefono"> Teléfono:</label>
+      <input type="text" name="telefono" placeholder="Ingrese teléfono opcional" minlength="4" maxlength="9" />
+    </div>
+    <div class="container-fluid">
+      <label for="fecha_nac">Fecha de nacimiento:</label>
+      <input type="date" id="fecha" name="fecha_nac" min="1900-01-01" required />
+    </div>
+    <button type="submit" class="btn btn-primary">
+      Guardar
+    </button>
+  </form>
+
+</div>
+    <div class="container w-25">
+
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="inputNombre">Nombre</label>
+          <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" required>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="inputApellido">Apellido</label>
+          <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" required>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="inputDNI">DNI</label>
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" id="inputDNI" placeholder="Ejemplo: 11.222.333 (sin los puntos)" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputTelefono">Teléfono</label>
+        <input type="text" class="form-control" id="inputTelefono" placeholder="+54 11 55223344" required>
+      </div>
+
+      <div class="form-group">
+        <label class="my-1 mr-2" for="inputFecha">Fecha</label>
+        <input id="datetimepicker" type="text">
+      
+        <script>
+          $(function () {
+            $("#datetimepicker").datetimepicker();
+          });
+        </script>
+      </div> 
+
+      <div class="form-group">
+        <label for="horario">Horario</label>
+        <select id="horario" name="horario" class="form-control" required>
+          <option value=""></option>
+          <option value="10:00hs">10:00 hs.</option>
+          <option value="11:00hs">11:00 hs.</option>
+          <option value="12:00hs">12:00 hs.</option>
+          <option value="13:00hs">13:00 hs.</option>
+          <option value="14:00hs">14:00 hs.</option>
+          <option value="15:00hs">15:00 hs.</option>
+        </select>
+      </div>
+
+    <!-- 
+        <input type="date" name="fecha" min="1900-01-01" class="form-control my-1 mr-sm-2" id="inputFecha" required>
+  
+    -->
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+
+    </div>
+
+  </form>
+
+  {% endblock %}
 
 {% block content %} {% endblock %}
 
