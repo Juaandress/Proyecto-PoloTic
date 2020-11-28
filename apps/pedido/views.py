@@ -9,19 +9,8 @@ from .models import pedido
 # Create your views here.
 
 
-@login_required
 def mostrar_pedidos(request):
-    busqueale = request.GET.get("buscar")
-    current_user = request.user
-    user = User.objects.get(id=current_user.id)
-    todos = pedido.objects.filter(id_usuario=user.id).order_by("fecha")
-    if busqueale:
-        todos = pedido.objects.filter(
-            Q(fecha__icontains=busqueale) | Q(fecha=busqueale) | Q(descripcion=busqueale) | Q(descripcion__icontains=busqueale) | Q(estado=busqueale) | Q(estado__icontains=busqueale)).distinct()
-        ctx = {"user": user, "pedidos": todos}
-        return render(request, "", ctx) #Aca debemos poner el URL al template de busqueda de pedidos
-    ctx = {"user": user, "pedidos": todos}
-    return render(request, "", ctx) #Aca debemos poner el URL al template de busqueda de pedidos
+    return render(request,'Pedidos/pedidos.html')
 
 
 @ login_required
