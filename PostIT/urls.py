@@ -18,6 +18,12 @@ from django.urls import path, include
 from django.contrib.auth import views as auth
 from django.urls import reverse_lazy
 from . import views
-app_name='turnos'
 urlpatterns = [
+    path('admin/', admin.site.urls),	
+    path('', views.Home, name='Home'),	
+    path("turnos/", include("apps.turnos.urls")),	
+    path("pedido/", include("apps.pedido.urls")),	
+    path("paciente/", include("apps.paciente.urls")),	
+    path('Login', auth.LoginView.as_view(template_name='Usuarios/login.html'), name='login'),	
+    path('Logout', auth.LogoutView.as_view(template_name='Usuarios/Logout.html'), name='logout'),	
 ]
