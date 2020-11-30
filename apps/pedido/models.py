@@ -12,6 +12,7 @@ class producto(models.Model):
     distancia=models.CharField(max_length=2,choices=distancia_choice,null=True,blank=True)
     lado=models.CharField(max_length=2,choices=lado_choice,null=True,blank=True)
     armazon=models.BooleanField(default=False,null=True,blank=True)
+    precio = models.FloatField()
 
 class pedido(models.Model):
     paciente = models.ForeignKey(paciente, on_delete=models.SET_NULL, null=True, blank=True)
@@ -20,7 +21,6 @@ class pedido(models.Model):
     productos = models.ManyToManyField(producto,related_name="pedidos_tiene")
     descripcion = models.TextField()
     fecha = models.DateField(null=True, blank=True)
-    precio = models.CharField(max_length=10)
-    subtotal = models.CharField(max_length=10)
+    subtotal = models.FloatField()
     tipo_pago = models.CharField(max_length=30)
-    estado = models.BooleanField(default=False)
+    Finalizado = models.BooleanField(default=False)

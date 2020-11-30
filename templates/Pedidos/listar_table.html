@@ -1,0 +1,25 @@
+
+
+{% for object in object_list %} 
+<tr>
+<td>{{ object.paciente.nombre}}</td>
+<td>{{object.vendedor.usuario.first_name }}</td>
+<td>{{object.tecnico.usuario.first_name }}</td>
+<td>{% for producto in object.productos.all %}
+    <p>{{producto.nombre}}</p>
+    {% endfor %}
+</td>
+<td>{{object.descripcion }}</td>
+<td>{{object.fecha }}</td>
+<td>{{object.precio }}</td>
+<td>{{object.subtotal }}</td>
+<td>{{object.tipo_pago }}</td>
+<td>{{object.estado }}</td>
+
+<!-- If objet_list is empty  -->
+
+</tr>
+{% empty %} 
+
+<strong>No objects yet. </strong> 
+{% endfor %}

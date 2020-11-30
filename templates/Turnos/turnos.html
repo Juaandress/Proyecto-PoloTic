@@ -1,19 +1,90 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} <title>Turnos</title> {% endblock %}
+{% block title %} <title>TURNOS | Clínica de Optometría</title> {% endblock %}
 
-{% block header %} <p>Turnos</p> {% endblock %}
+{% block header %}
+{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href=" {% static 'css/mystyle2.css' %}">
+<!-- Fecha y horario -->
+  <br><br><br><br>
+  <form class="container">
+    <h1 class="title" style="text-align: center;">TURNOS</h1>
+    <br>
+    <div class="allInputs"></div>
 
-<p>
-    Messi es arquero
-</p>
+    <div class="row">
+      <div class="col-4">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" placeholder="Nombre" id="nombre" required>
+          <br>
+      </div>
 
+      <div class="col-4">  
+        <label for="">Apellido</label>
+        <input type="text" class="form-control" placeholder="Apellido" id="apellido" required>
+        <br>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-4">  
+        <label for="">DNI</label>
+        <input type="number" class="form-control" placeholder="DNI" id="dni" required>
+        <br>
+      </div>
+    
+      <div class="col-4">
+        <label for="">Teléfono</label>
+        <input type="number" class="form-control" placeholder="Teléfono" id="telefono" required>
+        <br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <form action="/action_page.php">
+          <label for="fecha">Fecha</label>
+          <br>
+          <input type="date" id="fecha" name="fecha">
+          <!-- <input type="submit"> -->
+        </form>
+        <br>
+      </div>
+
+      <div class="col-4">
+        <label for="horario">Horario</label>
+        <select id="horario" name="horario" class="form-control" required>
+          <option value=""></option>
+          <option value="10:00hs">10:00 hs.</option>
+          <option value="11:00hs">11:00 hs.</option>
+          <option value="12:00hs">12:00 hs.</option>
+          <option value="13:00hs">13:00 hs.</option>
+          <option value="14:00hs">14:00 hs.</option>
+          <option value="15:00hs">15:00 hs.</option>
+          <option value="16:00hs">16:00 hs.</option>
+          <option value="17:00hs">17:00 hs.</option>
+        </select>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <h3>
+      <button name="agregar" 
+              type="submit" 
+              data-toggle="modal" 
+              data-target="#confirm-submit"
+              class="btn btn-primary" 
+              id="agregar">Agregar turno</button>
+    </h3>
+  </form> 
 
 {% endblock %}
+
 
 {% block js %}
 <script type="module" src="{% static 'js/ajax-control.js' %}"></script>
 {% endblock %}
+
+

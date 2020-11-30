@@ -18,9 +18,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 def Render_html(request):
     return render(request,'Turnos/turnos.html')
     
+    
 class turnoList(ListView):  #Ver todos los turnos
     model = turnos
-    template_name = 'Turnos/turnos.html'
+    template_name = 'Turnos/listar.html'
 
 class verTurnoEsp(DetailView): #Ver un turno en especifico
     model = turnos
@@ -29,8 +30,6 @@ class turnoCreation(CreateView):
     model = turnos
     success_url = reverse_lazy('turnos:Listar')
     fields = ['secretaria', 'paciente', 'medico', 'fecha', 'asistencia']
-
-
 
 class turnoUpdate(UpdateView):
     model = turnos

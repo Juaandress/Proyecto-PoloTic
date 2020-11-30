@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Pedidos</title> {% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href=" {% static 'css/mystyle2.css' %}">
+  <br><br><br><br>
+  <form class="container" method="POST">
+    {% csrf_token %}
+    <h1 class="title" style="text-align: center;">PEDIDOS</h1>
+    <br>
+    <div class="allInputs"></div>
+
+    <div class="row">
+      <div class="col-3">
+          {{form.paciente.label}}
+          {{form.paciente}}
+          <br>
+      </div>
+
+      
+    <div class="row">
+      <div class="col-3">
+          {{form.fecha.label}}
+          {{form.fecha}}
+          <br>
+      </div>
+
+    <div class="row">
+      <div class="col-7">
+        <label for="">Descripción</label>
+        <textarea type="text" class="form-control" placeholder="Describa aquí el pedido" maxlength="300" id="comentarios"></textarea>
+        <br>
+      </div>
+
+      <div class="col-2">
+        <label for="">Precio</label>
+        <input type="number" class="form-control" placeholder="Precio" id="precio" required>
+        <br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label for="">Subtotal</label>
+        <input type="number" class="form-control" placeholder="Subtotal" id="subtotal" required>
+        <br>
+      </div>
+
+      <div class="col-7">
+        <label for="pago">Forma de pago</label>
+        <p>
+          <input type="radio" name="radio" value="credito" required> Tarjeta de crédito
+          &nbsp;
+          &nbsp;
+          <input type="radio" name="radio" value="debito"> Tarjeta de débito
+          &nbsp;
+          &nbsp;
+          <input type="radio" name="radio" value="virtual"> Billetera virtual
+          &nbsp;
+          &nbsp;
+          <input type="radio" name="radio" value="efectivo"> Efectivo
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-9">
+        <label for="">Si es lente</label>
+            <p>
+              <input type="radio" name="radio" value="lejos" required> Lejos
+              &nbsp;
+              &nbsp;
+              <input type="radio" name="radio" value="cerca"> Cerca
+              &nbsp;
+              &nbsp;
+            </p>
+            <p>
+              <input type="radio" name="radio" value="izquierda" required> Izquierda
+              &nbsp;
+              <input type="radio" name="radio" value="derecha"> Derecha
+              &nbsp;
+            </p>
+            <p></p>
+              <input type="radio" name="radio" value="conarmazon" required> Con armazón
+              &nbsp;
+              <input type="radio" name="radio" value="sinarmazon"> Sin armazón
+            </p>
+            <br>  
+      </div>
+    </div>
+
+    <h3>
+      <button name="solicitar" 
+              type="submit" 
+              data-toggle="modal" 
+              data-target="#confirm-submit"
+              class="btn btn-primary" 
+              id="solicitar">Generar pedido</button>
+    </h3>
+  </form>
+
+{% endblock %}
+
+
+{% block js %}
+<script type="module" src="{% static 'js/ajax-control.js' %}"></script>
+{% endblock %}
