@@ -14,4 +14,4 @@ class historial_medico(models.Model):
     paciente = models.OneToOneField(paciente,on_delete=models.CASCADE)
     descripcion = models.CharField(max_length=300)
     fecha = models.DateField(default=date.today,blank=True)
-    medico = models.ManyToManyField(medico,related_name="modifica")
+    medico = models.ManyToManyField(medico,related_name="modifica",blank=True)

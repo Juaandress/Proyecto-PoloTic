@@ -2,11 +2,17 @@
 {% load static %}
 {% block title %} <title>Pedidos</title> {% endblock %}
 
-{% block header %}
-{% endblock %}
+{% block style %}
+<link rel="stylesheet" href=" {% static 'css/mystyle2.css' %}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+{% endblock style %}
 
 {% block content %}
-<link rel="stylesheet" href=" {% static 'css/mystyle2.css' %}">
+
+
+
   <br><br><br><br>
   <form class="container" method="POST">
     {% csrf_token %}
@@ -15,92 +21,56 @@
     <div class="allInputs"></div>
 
     <div class="row">
-      <div class="col-3">
+      <div class="col-4">
           {{form.paciente.label}}
           {{form.paciente}}
           <br>
       </div>
-
+      <div class="col-4">
+        {{form.tecnico.label}}
+        {{form.tecnico}}
+        <br>
+      </div>
+      <div class="col-4">
+        {{form.vendedor.label}}
+        {{form.vendedor}}
+        <br>
+      </div>
       
-    <div class="row">
-      <div class="col-3">
-          {{form.fecha.label}}
-          {{form.fecha}}
-          <br>
-      </div>
+      
+      
+    </div>
 
     <div class="row">
-      <div class="col-7">
-        <label for="">Descripción</label>
-        <textarea type="text" class="form-control" placeholder="Describa aquí el pedido" maxlength="300" id="comentarios"></textarea>
-        <br>
+      <div class="col-6">
+        {{ form.tipo_pago.label }}
+          {{ form.tipo_pago }}      
       </div>
-
-      <div class="col-2">
-        <label for="">Precio</label>
-        <input type="number" class="form-control" placeholder="Precio" id="precio" required>
-        <br>
+      <div class="col-6">
+        {{ form.fecha.label }}  
+          {{ form.fecha }}      
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
-        <label for="">Subtotal</label>
-        <input type="number" class="form-control" placeholder="Subtotal" id="subtotal" required>
-        <br>
+      <div class="col-6">
+        {{ form.descripcion.label }}  
+        {{ form.descripcion }}  
       </div>
 
-      <div class="col-7">
-        <label for="pago">Forma de pago</label>
-        <p>
-          <input type="radio" name="radio" value="credito" required> Tarjeta de crédito
-          &nbsp;
-          &nbsp;
-          <input type="radio" name="radio" value="debito"> Tarjeta de débito
-          &nbsp;
-          &nbsp;
-          <input type="radio" name="radio" value="virtual"> Billetera virtual
-          &nbsp;
-          &nbsp;
-          <input type="radio" name="radio" value="efectivo"> Efectivo
-        </p>
+      <div class="col-6">
+        {{ form.productos.label }}  
+        {{ form.productos }}  
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-24 ">
 
-    <div class="row">
-      <div class="col-9">
-        <label for="">Si es lente</label>
-            <p>
-              <input type="radio" name="radio" value="lejos" required> Lejos
-              &nbsp;
-              &nbsp;
-              <input type="radio" name="radio" value="cerca"> Cerca
-              &nbsp;
-              &nbsp;
-            </p>
-            <p>
-              <input type="radio" name="radio" value="izquierda" required> Izquierda
-              &nbsp;
-              <input type="radio" name="radio" value="derecha"> Derecha
-              &nbsp;
-            </p>
-            <p></p>
-              <input type="radio" name="radio" value="conarmazon" required> Con armazón
-              &nbsp;
-              <input type="radio" name="radio" value="sinarmazon"> Sin armazón
-            </p>
-            <br>  
-      </div>
+          <input class="btn btn-primary" type="submit" value="Generar Pedido" name="">
+   </div>
+      
     </div>
-
-    <h3>
-      <button name="solicitar" 
-              type="submit" 
-              data-toggle="modal" 
-              data-target="#confirm-submit"
-              class="btn btn-primary" 
-              id="solicitar">Generar pedido</button>
-    </h3>
+    <strong>{{form.errors}}</strong>
   </form>
 
 {% endblock %}
@@ -108,4 +78,12 @@
 
 {% block js %}
 <script type="module" src="{% static 'js/ajax-control.js' %}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(function () {
+    $("#datepicker").datepicker({dateFormat: "dd/mm/yy"});
+  });
+</script>
+
 {% endblock %}
