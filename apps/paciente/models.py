@@ -9,6 +9,7 @@ class paciente(models.Model):
     dni_paciente = models.IntegerField()
     nombre = models.CharField(max_length=50)
     telefono = models.BigIntegerField()
+    fecha = models.DateField(null=True, blank=True)
 
 class historial_medico(models.Model):
     paciente = models.OneToOneField(paciente,on_delete=models.CASCADE)
