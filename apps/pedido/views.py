@@ -9,11 +9,12 @@ def Render_html(request):
     return render(request,'Pedidos/pedidos.html')
 
 
-class Listar(LoginRequiredMixin, PermisosMixin, generic.ListView):
+class Listar(LoginRequiredMixin, generic.ListView):
     model = models.pedido
     template_name = "Pedidos/listar.html"
     
 class ListarProducto(LoginRequiredMixin, PermisosMixin, generic.ListView):
+    rol='vendedor'
     model = models.producto
     template_name = "Pedidos/productos.html"
     
@@ -35,7 +36,8 @@ class Cargar_pedido(LoginRequiredMixin, PermisosMixin, generic.CreateView):
 
         return render(request, self.template_name, {'form': form})
 
-class Modificar_pedido(LoginRequiredMixin, generic.UpdateView):
+class Modificar_pedido(LoginRequiredMixin, PermisosMixin, generic.UpdateView):
+    rol='vendedor'
     template_name='Pedidos/Modificar_pedido.html'
     model=models.pedido
     form_class=pedidoForm
@@ -45,11 +47,12 @@ class Modificar_pedido(LoginRequiredMixin, generic.UpdateView):
         form.save_m2m()
         return super(Modificar_pedido,self).form_valid(form)
 
-class Finalizar_pedido(LoginRequiredMixin, generic.UpdateView):
+class Finalizar_pedido(LoginRequiredMixin,PermisosMixin, generic.UpdateView):
     template_name='Pedidos/Modificar_pedido.html'
     model=models.pedido
     form_class=finPedidoForm
     success_url = reverse_lazy('pedido:listar')
+    rol='tecnico'
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
@@ -60,7 +63,8 @@ class Finalizar_pedido(LoginRequiredMixin, generic.UpdateView):
 
         return render(request, self.template_name, {'form': form})
 
-class Borrar_pedido(LoginRequiredMixin, generic.DeleteView):
+class Borrar_pedido(LoginRequiredMixin,PermisosMixin, generic.DeleteView):
+    rol='vendedor'
     model = models.pedido
     template_name = 'Pedidos/Borrar_pedido.html'
     success_url = reverse_lazy('pedido:listar')

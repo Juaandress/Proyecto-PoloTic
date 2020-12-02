@@ -10,21 +10,15 @@ class PermisosMixin:
 
 def check(request,rol):
 	u = request.user
-	if u.groups.all()[0].name and rol == 'secretaria':
-		print("Hola soy S")
+	if u.groups.all()[0].name== 'secretaria' and rol == 'secretaria':
 		return True
-	elif u.groups.all()[0].name and rol == 'vendedor':
-		print("Hola soy V")
+	elif u.groups.all()[0].name== 'vendedor' and rol == 'vendedor':
 		return True
-	elif u.groups.all()[0].name and rol == 'gerente':
-		print("Hola soy G")
+	elif u.groups.all()[0].name== 'gerente':
 		return True
-	elif u.groups.all()[0].name and rol == 'tecnico':
-		print("Hola soy T")
+	elif u.groups.all()[0].name== 'tecnico' and rol == 'tecnico':
 		return True
-	elif u.groups.all()[0].name and rol == 'medico':
-		print("Hola soy M")
+	elif u.groups.all()[0].name== 'medico' and rol == 'medico':
 		return True
 	else:
-		print("Hola soy dAVIsito")
 		return False

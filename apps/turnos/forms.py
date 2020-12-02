@@ -1,24 +1,18 @@
-from django import forms
-from django.db import models
+from django.forms import ModelForm, DateInput
 from .models import turnos
 
-
-class registerturno(forms.ModelForm):
-    paciente = forms.CharField(max_length=60, widget=forms.Textarea(
-        attrs={"placeholder": "Paciente"}))
-
-    fecha = forms.DateField(widget=forms.DateInput(
-        attrs={"placeholder": "dia/mes/año"}))
-
-    secretaria = forms.CharField(max_length=60, widget=forms.Textarea(
-        attrs={"placeholder": "Secretaria"}))
-
-    Medico = forms.CharField(max_length=60, widget=forms.Textarea(
-        attrs={"placeholder": "Medico"}))
-
-    asistencia = forms.CharField(max_length=60, widget=forms.Textarea(
-        attrs={"placeholder": "Asistencia"}))
-
-    class Meta():
-        model = turnos
-        fields = ['fecha', 'secretaria', 'asistencia']
+class turnosForm(ModelForm):
+    class Meta:
+        model=turnos
+        fields=['secretaria','paciente','medico','fecha','asistencia']
+        widgets={
+            "fecha":DateInput(
+                format='%d/%m/%Y',
+                attrs={
+            'id':'datepicker',
+            'autocomplete':"off"
+        })}
+    def __init__(self, *args, **kwargs):
+        super(turnosForm, self).__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'

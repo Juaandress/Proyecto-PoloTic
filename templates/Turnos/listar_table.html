@@ -6,6 +6,9 @@
 <td>{{object.medico.usuario.first_name }}</td>
 <td>{{object.fecha }}</td>
 <td>{{object.asistencia }}</td>
+<td><a class="btn btn-warning btn-sm" href="{% url 'turnos:modificar' object.pk %}">Modificar</a></td>
+<td><a class="btn btn-danger btn-sm" href="{% url 'turnos:borrar' object.pk %}">Borrar</a></td>
+<td><a class="btn btn-secondary btn-sm" href="{% url 'turnos:ver' object.pk %}">Ver</a></td>
 
 
 <!-- If objet_list is empty  -->

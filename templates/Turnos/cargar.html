@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Pedidos</title> {% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href=" {% static 'css/mystyle2.css' %}">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+{% endblock style %}
+
+{% block content %}
+
+
+
+  <br><br><br><br>
+  <form class="container" method="POST">
+    {% csrf_token %}
+    <h1 class="title" style="text-align: center;">PEDIDOS</h1>
+    <br>
+    <div class="allInputs"></div>
+
+    <div class="row">
+      <div class="col-6">
+          {{form.paciente.label}}
+          {{form.paciente}}
+          <br>
+      </div>
+      <div class="col-6">
+        {{form.medico.label}}
+        {{form.medico}}
+        <br>
+      </div>
+      
+      
+      
+    </div>
+    
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.asistencia.label }}
+          {{ form.asistencia }}      
+      </div>
+      <div class="col-6">
+        {{ form.fecha.label }}  
+          {{ form.fecha }}      
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-24 ">
+
+          <input class="btn btn-primary" type="submit" value="Generar Pedido" name="">
+   </div>
+      
+    </div>
+    <strong>{{form.errors}}</strong>
+  </form>
+  
+
+{% endblock %}
+
+
+{% block js %}
+<script type="module" src="{% static 'js/ajax-control.js' %}"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+  $(function () {
+    $("#datepicker").datepicker({dateFormat: "dd/mm/yy"});
+  });
+</script>
+
+{% endblock %}

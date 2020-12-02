@@ -8,7 +8,7 @@ from apps.paciente.models import paciente
 # Create your models here.
 
 class turnos(models.Model):
-    secretaria = models.ForeignKey(secretaria, on_delete=models.CASCADE)
+    secretaria = models.ForeignKey(secretaria, on_delete=models.CASCADE,blank=True)
     paciente = models.ForeignKey(paciente, on_delete=models.CASCADE)  
     medico = models.ForeignKey(medico, on_delete=models.CASCADE)
     fecha = models.DateField(null=True, blank=True)

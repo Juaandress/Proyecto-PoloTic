@@ -10,8 +10,8 @@
             <div class="card-body">
               <h2 class="">Pedido</h2>
               <h4 class=" ">{{object.paciente.nombre}}</h4>
-              <h4 class=" ">{{object.vendedor.user.username}}</h4>
-              <h4 class=" ">{{object.tecnico.user.username}}</h4>
+              <h4 class=" ">{{object.vendedor.usuario.first_name}}</h4>
+              <h4 class=" ">{{object.tecnico.usuario.first_name}}</h4>
               {% for p in object.productos.all %}
               <ul>
                 <li class=" "><h4>{{p.nombre}}</h4></li>

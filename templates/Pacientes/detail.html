@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Pedidos</title> {% endblock %}
+{% block content %}
+<br><br><br>
+<div class="container">
+<div class="row justify-content-center">
+    <div class="column md-24">
+        <div class="card">
+            <div class="card-body">
+              <h2 class="">Paciente</h2>
+              <h4 class=" ">{{object.dni_paciente}}</h4>
+              <h4 class=" ">{{object.nombre}}</h4>
+              <h4 class=" ">{{object.telefono}}</h4>              
+              <h4 class=" ">{{object.fecha}}</h4>
+              <a class="btn btn-warning btn-sm" href="{% url 'paciente:modhistorial' object.historial_medico.pk %}">Modificar Historial</a>
+              <a class="btn btn-secondary btn-sm" href="{% url 'paciente:historial' object.historial_medico.pk %}">Ver Historia Medica</a>
+            </div> 
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}

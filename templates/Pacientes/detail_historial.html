@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Pedidos</title> {% endblock %}
+{% block content %}
+<br><br><br>
+<div class="container">
+<div class="row justify-content-center">
+    <div class="column md-24">
+        <div class="card">
+            <div class="card-body">
+              <h2 class="">Historia de {{object.paciente.nombre}}</h2>
+              <h4 class=" ">{{object.paciente.dni_paciente}}</h4>
+              <h4 class=" ">{{object.descripcion}}</h4>
+              <h4 class=" ">{{object.fecha}}</h4>              
+              {% for m in object.medico.all %}
+              <ul>
+                <li class=" "><h4>{{m.usuario.first_name}}</h4></li>
+              </ul>
+              
+              {% endfor %}
+           </div> 
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock content %}

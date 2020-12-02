@@ -3,18 +3,9 @@
 {% for object in object_list %} 
 <tr>
 <td>{{ object.paciente.nombre}}</td>
-<td>{{object.vendedor.usuario.username }}</td>
-<td>{{object.tecnico.usuario.username }}</td>
-<td>{% for producto in object.productos.all %}
-    <p>{{producto.nombre}}</p>
-    {% endfor %}
-</td>
-<td>{{object.descripcion }}</td>
+<td>{{object.vendedor.usuario.first_name }}</td>
 <td>{{object.fecha }}</td>
-<td>{{object.precio }}</td>
 <td>{{object.subtotal }}</td>
-<td>{{object.tipo_pago }}</td>
-<td>{{object.estado }}</td>
 <td><a class="btn btn-warning btn-sm" href="{% url 'pedido:modificar' object.pk %}">Modificar</a></td>
 <td><a class="btn btn-warning btn-sm" href="{% url 'pedido:finalizar' object.pk %}">Finalizar</a></td>
 <td><a class="btn btn-danger btn-sm" href="{% url 'pedido:borrar' object.pk %}">Borrar</a></td>
