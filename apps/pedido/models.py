@@ -16,8 +16,8 @@ class producto(models.Model):
 
 class pedido(models.Model):
     paciente = models.ForeignKey(paciente, on_delete=models.SET_NULL, null=True, blank=True)
-    vendedor = models.ForeignKey(vendedor,on_delete=models.CASCADE)
-    tecnico = models.ForeignKey(tecnico,on_delete=models.CASCADE)
+    vendedor = models.ForeignKey(vendedor,on_delete=models.SET_NULL, null=True, blank=True)
+    tecnico = models.ForeignKey(tecnico,on_delete=models.SET_NULL, null=True, blank=True)
     productos = models.ManyToManyField(producto,related_name="pedidos_tiene",blank=True)
     descripcion = models.TextField()
     fecha = models.DateField(null=True, blank=True)

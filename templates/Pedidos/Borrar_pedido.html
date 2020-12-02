@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Pedidos</title> {% endblock %}
+{% block content %}
+<br><br><br>
+<form method="post">{% csrf_token %} 
+    <p>Esta seguro de eliminar el pedido - "{{ object }}"?</p> 
+    <input type="submit" value="Confirmar">
+</form>
+{% endblock content %}

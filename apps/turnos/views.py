@@ -25,20 +25,24 @@ class turnoList(ListView):  #Ver todos los turnos
 
 class verTurnoEsp(DetailView): #Ver un turno en especifico
     model = turnos
+    template_name= 'Turnos/detail.html'
 
 class turnoCreation(CreateView):
     model = turnos
-    success_url = reverse_lazy('turnos:Listar')
+    success_url = reverse_lazy('turnos:listar')
+    template_name= 'Turnos/cargar.html'
     fields = ['secretaria', 'paciente', 'medico', 'fecha', 'asistencia']
 
 class turnoUpdate(UpdateView):
     model = turnos
-    success_url = reverse_lazy('turnos:Listar')
+    template_name= 'Turnos/modificar.html'
+    success_url = reverse_lazy('turnos:listar')
     fields = ['secretaria', 'paciente', 'medico', 'fecha', 'asistencia']
     
 class turnoDelete(DeleteView):
     model = turnos
-    success_url = reverse_lazy('turnos:Listar')
+    template_name= 'Turnos/borrar.html'
+    success_url = reverse_lazy('turnos:listar')
 
 
 
