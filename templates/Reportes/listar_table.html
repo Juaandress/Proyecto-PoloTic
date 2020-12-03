@@ -1,0 +1,19 @@
+
+{% for object in object_list %} 
+<tr>
+<td>{{object.fecha }}</td>
+<td>{{object.secretaria.usuario.first_name}}</td>
+<td>{{object.medico.usuario.first_name }}</td>
+<td>{{object.asistencia }}</td>
+<td><a class="btn btn-secondary btn-sm" href="{% url 'paciente:ver' object.paciente.pk %}">Ver</a></td>
+
+
+
+
+<!-- If objet_list is empty  -->
+
+</tr>
+{% empty %} 
+
+<strong>No objects yet. </strong> 
+{% endfor %}

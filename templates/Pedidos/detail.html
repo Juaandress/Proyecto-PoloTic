@@ -5,25 +5,25 @@
 <br><br><br>
 <div class="container">
 <div class="row justify-content-center">
-    <div class="column md-24">
+    <div class="auto-device">
         <div class="card">
             <div class="card-body">
               <h2 class="">Pedido</h2>
-              <h4 class=" ">{{object.paciente.nombre}}</h4>
-              <h4 class=" ">{{object.vendedor.usuario.first_name}}</h4>
-              <h4 class=" ">{{object.tecnico.usuario.first_name}}</h4>
+              <h4 class=" ">Nombre: {{object.paciente.nombre}}</h4>
+              <h4 class=" ">Vendedor: {{object.vendedor.usuario.first_name}}</h4>
+              <h4 class=" ">Tecnico: {{object.tecnico.usuario.first_name}}</h4>
               {% for p in object.productos.all %}
               <ul>
-                <li class=" "><h4>{{p.nombre}}</h4></li>
+                <li class=" "><h4>Tipo de producto: {{p.nombre}}</h4></li>
               </ul>
               
               {% endfor %}
               
-              <h4 class=" ">{{object.descripcion}}</h4>
-              <h4 class=" ">{{object.fecha}}</h4>
-              <h4 class=" ">{{object.subtotal}}</h4>
-              <h4 class=" ">{{object.tipo_pago}}</h4>
-              <h4 class=" ">{{object.Finalizado}}</h4>
+              <h4 class=" ">Descripcion: {{object.descripcion}}</h4>
+              <h4 class=" ">Fecha: {{object.fecha}}</h4>
+              <h4 class=" ">Subtotal: {{object.subtotal}}</h4>
+              <h4 class=" ">Tipo de Pago: {{object.tipo_pago}}</h4>
+              <h4 class=" ">Finalizado: {{object.Finalizado}}</h4>
             </div> 
         </div>
     </div>

@@ -24,6 +24,7 @@ urlpatterns = [
     path("turnos/", include("apps.turnos.urls")),	
     path("pedido/", include("apps.pedido.urls")),	
     path("paciente/", include("apps.paciente.urls")),	
+    path("reportes/", include("apps.reporte.urls")),
     path('Login', auth.LoginView.as_view(template_name='Usuarios/login.html'), name='login'),	
     path('Logout', auth.LogoutView.as_view(template_name='Usuarios/Logout.html'), name='logout'),
     path('turnos', auth.LogoutView.as_view(template_name='Turnos/turnos.html'), name='turnos'),

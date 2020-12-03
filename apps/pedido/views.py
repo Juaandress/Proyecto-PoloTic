@@ -5,6 +5,10 @@ from django.urls import reverse_lazy
 from .forms import pedidoForm,finPedidoForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.utils.funciones import PermisosMixin
+from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse, HttpResponseRedirect
+
+
 def Render_html(request):
     return render(request,'Pedidos/pedidos.html')
 
@@ -72,3 +76,19 @@ class Borrar_pedido(LoginRequiredMixin,PermisosMixin, generic.DeleteView):
 class verPedido(LoginRequiredMixin, generic.DetailView): #Ver un turno en especifico
     model = models.pedido
     template_name= 'Pedidos/detail.html'
+
+def finalizar(request,pk):
+
+    if request.user.groups.all()[0].name=='tecnico':
+        pedido=models.pedido.objects.get(pk=pk)
+        context={'object':pedido}
+        if pedido.Finalizado:
+            return render(request,'Pedidos/yata.html',context)
+        if request.method=='POST':
+            pedido.Finalizado=True
+            pedido.tecnico=request.user.tecnico
+            pedido.save()
+            return HttpResponseRedirect(reverse_lazy('pedido:listar'))
+
+        return render(request,'Pedidos/finalizar.html',context)
+    raise PermissionDenied

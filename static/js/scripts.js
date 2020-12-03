@@ -19,7 +19,7 @@
   }
   $('input[type=radio].star').on('click',check);
   "use strict"; // Start of use strict
-  $('#TableT tbody').on('click', 'tr', go_to);
+
   //filter zona
   
   // Smooth scrolling using jQuery easing

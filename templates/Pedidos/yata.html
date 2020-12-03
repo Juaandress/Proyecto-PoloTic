@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} <title>Pedidos</title> {% endblock %}
+{% block content %}
+<br><br><br>
+<h1>EL pedido {{object.pk}} ya esta finalizado!</h1>
+<a href="{% url 'pedido:listar' %}" class='btn btn-primary'>Volver</a>
+{% endblock content %}

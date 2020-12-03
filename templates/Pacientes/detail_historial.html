@@ -9,12 +9,12 @@
         <div class="card">
             <div class="card-body">
               <h2 class="">Historia de {{object.paciente.nombre}}</h2>
-              <h4 class=" ">{{object.paciente.dni_paciente}}</h4>
-              <h4 class=" ">{{object.descripcion}}</h4>
-              <h4 class=" ">{{object.fecha}}</h4>              
+              <h4 class=" ">DNI: {{object.paciente.dni_paciente}}</h4>
+              <h4 class=" ">Descripcion: {{object.descripcion}}</h4>
+              <h4 class=" ">Fecha: {{object.fecha}}</h4>              
               {% for m in object.medico.all %}
               <ul>
-                <li class=" "><h4>{{m.usuario.first_name}}</h4></li>
+                <li class=" "><h4>Doctor: {{m.usuario.first_name}}</h4></li>
               </ul>
               
               {% endfor %}

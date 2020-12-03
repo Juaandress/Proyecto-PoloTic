@@ -1,0 +1,56 @@
+
+{% extends "Base.html" %}
+{% block title %}
+<title> Reportes </title>
+{% endblock title %}
+{% block content %}
+<header class="mastbody"> </header>
+    <div class="container h-100">
+    <br>
+    <br>
+    <br>
+
+        <div class="container table" style="border-radius: 5px; margin: 10px; padding: 10px; background-color: rgba(255, 255, 255, 0.959); filter:alpha(opacity=90); opacity:0.9;">
+            <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-responsive"> 
+                              <br>
+                            <table id="TableT" class="display table table-hover table-bordered " style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>DNI</th>
+                                        <th>Fecha</th>
+                                        <th>Paciente</th>
+                                        
+                                        
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                {% for object in object_list %} 
+                                <tr>
+                                <td>{{ object.paciente.dni_paciente}}</td>
+                                <td>{{object.fecha }}</td>
+                                <td><a class="btn btn-secondary btn-sm" href="{% url 'paciente:ver' object.paciente.pk %}">Ver</a></td>
+
+
+
+
+                                <!-- If objet_list is empty  -->
+
+                                </tr>
+                                {% empty %} 
+
+                                <strong>No objects yet. </strong> 
+                                {% endfor %}
+
+    
+                            </tbody>  
+                                 
+                        </table>                  
+                        </div>
+                    </div>
+            </div>  
+        </div>
+    </div>
+
+{% endblock content %}

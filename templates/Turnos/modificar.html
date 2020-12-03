@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %} <title>Pedidos</title> {% endblock %}
+{% block title %} <title>Modificar turnos</title> {% endblock %}
 
 {% block content %}
-<br><br><br>
-    <form method="POST">
+<br><br><br><br><br>
+    <form class="container" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Update">
+        <div class="row">
+            <div class="col-12">
+                <input type="submit" value="Update">
+            </div>
+            <br><br><br>
+        </div>
     </form>
-
 {% endblock content %}

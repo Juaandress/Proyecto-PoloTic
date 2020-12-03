@@ -1,4 +1,7 @@
-body,
+body{
+	background: url(../img/fondo.jpg);
+	background-repeat: no-repeat;
+  }
 		html {
 			margin: 0;
 			padding: 0;
@@ -8,7 +11,7 @@ body,
 		.user_card {
 			height: 450px;
 			width: 350px;
-			margin-top: auto;
+			margin-top: 100px;
 			margin-bottom: auto;
 			background: whitesmoke;
 			position: relative;
@@ -75,3 +78,12 @@ body,
 		text-indent: -15px;
 	  }
 	
+	container {
+		border-radius: 1%
+		width: 80vw
+		max-width: 45em
+		min-width: 400px
+		padding: 20px
+		box-shadow: .5em .5em .5em .5em rgba(0, 0, 0, .4)
+		margin: 2% auto
+	}
