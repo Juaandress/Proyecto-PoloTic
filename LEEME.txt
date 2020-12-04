@@ -1,0 +1,5 @@
+# Proyecto-Final-Polo-Tic
+Esto es un proyecto para un curso de desarrollo web de Python/Javascript
+
+39750861 - Nuñez Juan Andrés - juan-rcia@outlook.com
+******** - Agostina Martorano - **********@outlook.com
