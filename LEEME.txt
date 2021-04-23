@@ -2,5 +2,5 @@
 Esto es un proyecto para un curso de desarrollo web de Python/Javascript
 
 Datos de participantes
-39750861 - Nuñez Juan Andrés - juan-rcia@outlook.com
-37.072.061 - Agostina Martorano - agostinamartorano@hotmail.com
+ Nuñez Juan Andrés - juan.nunez.dev@outlook.com
+ Agostina Martorano - agostinamartorano@hotmail.com
